@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Sentiment Analysis - DS103_N21</h1>
+    <img src="https://i.pinimg.com/564x/14/1a/d5/141ad5fcf6a2fec3fbb60b46e76a1e1e.jpg", alt="oke1", style="width: 200px; height: auto;"> 
+    
+    <form method="POST" action="/predict">
+        <input type="text" id="sentence" name="sentence" placeholder="Enter sentence here...">
+        <button type="submit", class="btn">Predict</button>
+    </form>
+    {% if sentence %}
+    <h3 style="font-size: 25px;">Input Sentence</h3>
+    <p style="font-size: 20px; font-style: italic;">{{ sentence }}</p>
+    {% endif %}
+    {% if labels %}
+    <h3 style="font-size: 25px;">Predicted Label(s)</h3>
+    <ul class="styled-list">
+        {% for label in labels %}
+        <li class="label-box" >{{ label }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
